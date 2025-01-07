@@ -1,0 +1,105 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 35vh;
+  min-height: 35vh;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 10%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    url("../images/index-background.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.header .container-header {
+  position: relative;
+  z-index: 2;
+}
+
+.container-header {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-container {
+  text-align: center;
+}
+.logo {
+  font-size: 2.5rem;
+  color: rgb(254, 254, 254);
+}
+
+nav a,
+.logo-container a {
+  text-decoration: none;
+}
+.nav-top a {
+  position: relative;
+  margin-top: 10px;
+  margin-left: 20px;
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 600;
+  text-decoration: none; /* Remove default underline */
+  z-index: 1;
+}
+.nav-top a:first-child {
+  margin-left: 0px;
+}
+
+.nav-top a::after {
+  content: "";
+  position: absolute;
+  left: -5px; /* Extend the rectangle to the left */
+  right: -5px; /* Extend the rectangle to the right */
+  bottom: -2px; /* Position the underline slightly below the text */
+  height: 2px;
+  background-color: orange;
+  transition: all 0.3s ease; /* Smooth transition */
+  z-index: -1; /* Ensure the background is behind the text */
+}
+
+.nav-top a:hover::after {
+  bottom: 0%;
+  height: 100%;
+  background-color: rgb(199, 96, 0);
+}
+.nav-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+div > h1 {
+  margin: 50px;
+  text-align: center;
+}
+
+h1 {
+  color: rgb(255, 255, 255);
+}
