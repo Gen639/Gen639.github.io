@@ -1,8 +1,13 @@
-/* GENERAL */
+/* GENERAL STYLING*/
 * {
   margin: 0px;
   padding: 0px;
 }
+a {
+  font-family: "Lato", sans-serif;
+}
+/* FONTS */
+@import url("./fonts.css");
 
 /* HEADER */
 
@@ -12,7 +17,7 @@
   align-items: center;
   justify-content: center;
   height: 35vh;
-  min-height: 200px;
+  min-height: 300px;
   background-image: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 1) 10%,
@@ -53,7 +58,9 @@
   text-align: center;
 }
 .logo {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
+  font-family: "Raleway", serif;
+  font-weight: bold;
   color: rgb(254, 254, 254);
 }
 
@@ -62,6 +69,7 @@ nav a,
   text-decoration: none;
 }
 .nav-top a {
+  font-family: "Lato", sans-serif;
   position: relative;
   margin-top: 10px;
   margin-left: 20px;
@@ -78,19 +86,19 @@ nav a,
 .nav-top a::after {
   content: "";
   position: absolute;
-  left: -5px; /* Extend the rectangle to the left */
-  right: -5px; /* Extend the rectangle to the right */
-  bottom: -2px; /* Position the underline slightly below the text */
+  left: -5px;
+  right: -5px;
+  bottom: -2px;
   height: 2px;
   background-color: orange;
-  transition: all 0.3s ease; /* Smooth transition */
-  z-index: -1; /* Ensure the background is behind the text */
+  transition: all 0.3s ease;
+  z-index: -1;
 }
 
 .nav-top a:hover::after {
   bottom: 0%;
   height: 100%;
-  background-color: rgb(199, 96, 0);
+  background-color: darkorange;
 }
 .nav-top {
   display: flex;
@@ -105,6 +113,11 @@ div > h1 {
 
 h1 {
   color: rgb(255, 255, 255);
+  font-size: 2rem;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-weight: 100;
+
   text-shadow: 0px 0px 10px rgb(0, 0, 0), 0px 0px 20px rgba(227, 114, 0, 0.774),
     0px 0px 50px rgb(255, 247, 0);
 }
@@ -122,11 +135,10 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 300px;
+  max-width: 350px;
   margin: 0 20px;
-  border: 1px solid #000000;
-  border-top-left-radius: 30px; /* Adjust the value as needed */
-  border-top-right-radius: 30px;
+  border: 3px solid rgb(0, 197, 0);
+  border-radius: 30px;
   padding: 10px;
 }
 
@@ -140,4 +152,40 @@ h1 {
   max-height: 50px;
   max-width: 50px;
   margin: 15px;
+}
+
+.section-text-container {
+  text-align: justify;
+  margin: 10px;
+  border-top: 2px solid rgb(0, 200, 0);
+}
+
+.section-content-text {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+/* FOOTER */
+
+.footer-container {
+  margin-top: 15px;
+  height: 8vh;
+
+  background: linear-gradient(to right, rgb(37, 21, 0), rgb(58, 57, 0));
+}
+
+.nav-bottom {
+  margin-top: 15px;
+}
+.nav-bottom a {
+  color: white;
+
+  margin: 10px;
+}
+
+.copyright {
+  font-family: "Roboto";
+  color: white;
 }
