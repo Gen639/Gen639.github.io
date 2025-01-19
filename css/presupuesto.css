@@ -183,6 +183,7 @@ h3 {
 
   max-width: 700px;
   margin: 20px auto;
+
   background: #ffffff;
 
   border: 1px solid #ccc;
@@ -206,7 +207,7 @@ label {
 
 input,
 textarea {
-  width: 100%;
+  width: 90%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
