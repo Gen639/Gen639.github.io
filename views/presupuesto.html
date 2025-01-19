@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Budget</title>
+    <link rel="stylesheet" href="../css/presupuesto.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <header class="header">
+        <div class="container-header">
+          <div class="logo-container">
+            <a href="../index.html">
+              <p class="logo">ByteStream Studios</p>
+            </a>
+          </div>
+          <nav class="nav-top">
+            <a href="portfolio.html">Porfolio</a>
+            <a href="presupuesto.html" class="selected-menu-page">Budget</a>
+            <a href="contacto.html">Contact</a>
+          </nav>
+        </div>
+      </header>
+      <div>
+        <div class="form-container">
+          <form action="#" method="POST" class="styled-form">
+            <h2>Contact Form</h2>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="telephone">Telephone</label>
+              <input
+                type="tel"
+                id="telephone"
+                name="telephone"
+                placeholder="Enter your telephone"
+                pattern="[0-9]"
+                title="Please enter a valid phone number"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="additional-info">Additional Information</label>
+              <textarea
+                id="additional-info"
+                name="additional-info"
+                placeholder="Tell us about your project or send your questions"
+                rows="5"
+              ></textarea>
+            </div>
+            <div class="form-group checkbox-group">
+              <input
+                type="checkbox"
+                id="privacy-policy"
+                name="privacy-policy"
+                required
+              />
+              <label for="privacy-policy" class="privacy-policy-container">
+                Accept
+                <span>Privacy Policy</span>
+              </label>
+              <p><label for="modal-toggle" class="modal-link">(read)</label></p>
+            </div>
+
+            <input type="checkbox" id="modal-toggle" class="modal-toggle" />
+
+            <div class="modal">
+              <div class="modal-content">
+                <h2>Privacy Policy</h2>
+                <p>
+                  Hey there, fellow internet traveler! We know you’re probably
+                  not too excited about reading privacy policies, but here we
+                  are, so let’s make it a bit more fun! Here’s the lowdown on
+                  what we collect, what we do with it, and why we’re totally not
+                  up to anything shady.
+                </p>
+                <h3>1. The Stuff We Collect</h3>
+                <p>We might collect some information from you, like:</p>
+                <ul>
+                  <li>
+                    Your name, email, and other info you willingly throw our way
+                  </li>
+                  <li>
+                    Your device’s details (don’t worry, it’s not spying; we’re
+                    just saying hi to your IP address)
+                  </li>
+                  <li>
+                    Any other random bits of info you give us (we’re not picky)
+                  </li>
+                </ul>
+
+                <h3>2. What We Do With Your Info</h3>
+                <p>Here’s the fun part – we use your info for stuff like:</p>
+                <ul>
+                  <li>
+                    Making our website and services better (we’re all about
+                    improvement)
+                  </li>
+                  <li>
+                    Sending you cool updates, newsletters, and maybe a cat meme
+                    or two (only if you’re into that)
+                  </li>
+                  <li>
+                    Analyzing how much time you spend clicking around (hey,
+                    we’re curious)
+                  </li>
+                  <li>
+                    Doing what we need to do to follow the rules (we’re
+                    law-abiding citizens)
+                  </li>
+                </ul>
+
+                <h3>3. Sharing Your Info</h3>
+                <p>
+                  Don’t worry – we won’t sell your info to shady folks on the
+                  dark web. We might share it with:
+                </p>
+                <ul>
+                  <li>
+                    Trusted partners who help us do our thing (they’re cool,
+                    promise)
+                  </li>
+                  <li>
+                    If the law comes knocking (we’ve got to be responsible)
+                  </li>
+                  <li>
+                    With your permission (we’re not mind readers, so just let us
+                    know!)
+                  </li>
+                </ul>
+
+                <h3>4. Keeping Your Info Safe</h3>
+                <p>
+                  We take your privacy seriously, so we lock your info up
+                  tighter than the last cookie in the jar. But hey, just like
+                  anything on the internet, nothing is 100% foolproof (you can’t
+                  outsmart the hackers forever).
+                </p>
+
+                <h3>5. Your Rights (You’re in Control)</h3>
+                <p>
+                  You can always check, update, or delete your info. If you ever
+                  change your mind about giving us your email (we get it,
+                  inboxes are crowded), just let us know. We respect your
+                  choices.
+                </p>
+
+                <h3>6. Changes to This Policy</h3>
+                <p>
+                  We may update this policy from time to time. Don’t worry,
+                  we’ll keep it clear and try to make it as fun to read as
+                  possible (no promises, though).
+                </p>
+
+                <h3>7. Contact Us</h3>
+                <p>
+                  Got questions, concerns, or a hilarious meme to share? Hit us
+                  up!
+                </p>
+
+                <label for="modal-toggle" class="close-btn">Close</label>
+              </div>
+            </div>
+            <div class="form-group button-container">
+              <button type="submit" class="submit-btn">Send the pigeon</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="footer-container">
+        <nav class="nav-bottom">
+          <a href="../index.html">Home</a>
+          <a href="portfolio.html">Porfolio</a>
+          <a href="presupuesto.html">Budget</a>
+          <a href="contacto.html">Contact</a>
+        </nav>
+        <p class="copyright">
+          All Rights Reserved &copy; 2025 ByteStream Studios
+        </p>
+        <div class="social-media-container">
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+            <img
+              src="../images/social%20media/icons8-facebook-50.png"
+              alt="facebook-icon"
+            />
+          </a>
+
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+            <img
+              src="../images/social%20media/icons8-instagram-50.png"
+              alt="instagram-icon"
+            />
+          </a>
+
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+            <img
+              src="../images/social%20media/icons8-youtube-50.png"
+              alt="youtube-icon"
+            />
+          </a>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+            <img
+              src="../images/social%20media/icons8-telegram-50.png"
+              alt="telegram-icon"
+            />
+          </a>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+            <img src="../images/social%20media/icons8-x-50.png" alt="x-icon" />
+          </a>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+            <img
+              src="../images/social%20media/icons8-linkedin-50.png"
+              alt="linkedin-icon"
+            />
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
