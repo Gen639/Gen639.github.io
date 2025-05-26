@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Request a Quote | JingleWorks</title>
+    <link rel="stylesheet" href="../css/presupuesto.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">JingleWorks</div>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="galeria.html">Gallery</a></li>
+        <li><a href="presupuesto.html" class="active">Quote</a></li>
+        <li><a href="contacto.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <main class="quote-page">
+      <h1>Request a Custom Quote</h1>
+
+      <form id="quoteForm">
+        <!-- Contact Info -->
+        <fieldset>
+          <legend>Contact Information</legend>
+          <label>
+            Name:
+            <input type="text" name="name" maxlength="15" required />
+          </label>
+          <label>
+            Surname:
+            <input type="text" name="surname" maxlength="40" required />
+          </label>
+          <label>
+            Phone:
+            <input type="text" name="phone" maxlength="9" required />
+          </label>
+          <label>
+            Email:
+            <input type="email" name="email" required />
+          </label>
+        </fieldset>
+
+        <!-- Quote Options -->
+        <fieldset>
+          <legend>Project Details</legend>
+
+          <label>
+            Choose a product:
+            <select id="productSelect" name="product">
+              <option value="jingle" data-price="300">
+                Advertising Jingle – €300
+              </option>
+              <option value="logo" data-price="150">Sonic Logo – €150</option>
+              <option value="podcast" data-price="250">
+                Podcast Package – €250
+              </option>
+            </select>
+          </label>
+
+          <label>
+            Delivery Time (days):
+            <input type="number" id="deliveryDays" name="delivery" min="1" />
+          </label>
+
+          <fieldset>
+            <legend>Extras:</legend>
+            <label
+              ><input type="checkbox" class="extra" value="50" /> Voice-over
+              (+€50)</label
+            >
+            <label
+              ><input type="checkbox" class="extra" value="30" /> Express
+              Delivery (+€30)</label
+            >
+            <label
+              ><input type="checkbox" class="extra" value="20" /> Multiple
+              Revisions (+€20)</label
+            >
+          </fieldset>
+
+          <div>
+            <label>Estimated Total:</label>
+            <input type="text" id="totalEstimate" readonly value="€0" />
+          </div>
+        </fieldset>
+
+        <!-- Terms + Submit -->
+        <label class="terms">
+          <input type="checkbox" id="acceptTerms" required />
+          I accept the terms and privacy policy.
+        </label>
+
+        <div class="form-buttons">
+          <button type="submit">Send</button>
+          <button type="reset">Reset</button>
+        </div>
+      </form>
+    </main>
+
+    <script src="../js/presupuesto.js"></script>
+  </body>
+</html>

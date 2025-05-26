@@ -16,7 +16,7 @@ function moveToSlide(index) {
 
 setInterval(() => {
   moveToSlide(currentSlide + 1);
-}, 10000); // every 10 seconds
+}, 10000);
 
 track.addEventListener("click", () => {
   moveToSlide(currentSlide + 1);
