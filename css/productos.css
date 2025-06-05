@@ -262,6 +262,35 @@ body {
   display: inline-block;
 }
 
+/* Footer */
+.footer {
+  background-color: #0b0b1f;
+  padding: 2rem;
+  text-align: center;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: #aaa;
+  text-decoration: none;
+}
+
+.social-media-container {
+  margin-top: 10px;
+}
+.social-media-container a {
+  text-decoration: none;
+}
+.social-media-container img {
+  width: 40px;
+  height: auto;
+  filter: invert(1);
+  transition: transform 0.3s ease;
+}
+.social-media-container img:hover {
+  transform: scale(1.1);
+}
 /* Responsive */
 @media (max-width: 768px) {
   .nav-links {
