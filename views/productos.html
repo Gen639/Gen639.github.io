@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/productos.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Gallery | JingleWorks</title>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="logo">JingleWorks</div>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="productos.html" class="active">Gallery</a></li>
+        <li><a href="presupuesto.html">Quote</a></li>
+        <li><a href="contacto.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <main class="gallery-page">
+      <h1>Gallery</h1>
+      <div class="gallery-intro">
+        <p>
+          Browse a selection of our jingle styles, audio identities, and sound
+          designs. Click any image to expand and preview a sample.
+        </p>
+      </div>
+
+      <div class="project-gallery">
+        <div
+          class="project-card bakery"
+          data-project
+          style="background-image: url('../images/test.webp')"
+        >
+          <div class="project-content">
+            <h3>Local Bakery – “Morning Mood”</h3>
+            <p class="short-desc">
+              Warm acoustic jingle for a bakery’s morning radio ad.
+            </p>
+
+            <div class="genre-tags">
+              <span>Acoustic</span>
+              <span>Folk</span>
+              <span>Ad Jingle</span>
+            </div>
+
+            <button class="discover-btn">
+              <span class="btn-show">Show more</span>
+              <span class="btn-hide">Hide</span>
+            </button>
+
+            <div class="project-expanded-extra">
+              <p>
+                We created a cozy jingle with acoustic guitar and folk rhythm
+                for a small-town bakery’s morning campaign. The goal was warmth
+                and recognition.
+              </p>
+              <div class="audio-player" data-audio="../audio/test.mp3">
+                <div class="play-button">▶</div>
+                <div class="progress-bar">
+                  <div class="progress-fill"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-image"></div>
+        </div>
+
+        <div class="project-card" data-project>
+          <div class="project-summary">
+            <h3>Local Bakery – “Morning Mood”</h3>
+            <p class="short-desc">
+              Warm acoustic jingle for a bakery’s morning radio ad.
+            </p>
+            <button class="discover-btn">Discover</button>
+          </div>
+
+          <div class="project-details">
+            <div class="project-info">
+              <p>
+                We created a cozy jingle with acoustic guitar and folk rhythm
+                for a small-town bakery’s morning campaign.
+              </p>
+              <div class="genre-tags">
+                <span>Acoustic</span><span>Folk</span><span>Ad Jingle</span>
+              </div>
+              <div class="audio-player" data-audio="../audio/test.mp3">
+                <div class="play-button">▶</div>
+                <div class="progress-bar">
+                  <div class="progress-fill"></div>
+                </div>
+              </div>
+            </div>
+            <div class="project-cover">
+              <a
+                href="../images/test.webp"
+                data-lightbox="gallery"
+                class="lightbox-link"
+              >
+                <img src="../images/test.webp" alt="Local Bakery Project" />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card" data-project>
+          <div class="project-summary">
+            <h3>Local Bakery – “Morning Mood”</h3>
+            <p class="short-desc">
+              Warm acoustic jingle for a bakery’s morning radio ad.
+            </p>
+            <button class="discover-btn">Discover</button>
+          </div>
+
+          <div class="project-details">
+            <div class="project-info">
+              <p>
+                We created a cozy jingle with acoustic guitar and folk rhythm
+                for a small-town bakery’s morning campaign.
+              </p>
+              <div class="genre-tags">
+                <span>Acoustic</span><span>Folk</span><span>Ad Jingle</span>
+              </div>
+              <div class="audio-player" data-audio="../audio/test.mp3">
+                <div class="play-button">▶</div>
+                <div class="progress-bar">
+                  <div class="progress-fill"></div>
+                </div>
+              </div>
+            </div>
+            <div class="project-cover">
+              <a
+                href="../images/test.webp"
+                data-lightbox="gallery"
+                class="lightbox-link"
+              >
+                <img src="../images/test.webp" alt="Local Bakery Project" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="../js/productos.js"></script>
+    <!-- Lightbox2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox-plus-jquery.min.js"></script>
+  </body>
+</html>

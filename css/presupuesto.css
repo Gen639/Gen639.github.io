@@ -8,8 +8,8 @@ body {
 .quote-page {
   background-color: #121226;
   color: #f0f0f0;
-  padding: 5rem 2rem;
-  max-width: 800px;
+  padding: 2rem;
+  max-width: 1000px;
   margin: 0 auto;
 }
 /* Navbar */
@@ -68,6 +68,25 @@ body {
   cursor: pointer;
 }
 
+.quote-intro {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  color: #cccccc;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+.form-columns {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.form-column {
+  flex: 1;
+  min-width: 300px;
+}
+
 .quote-page h1 {
   font-size: 2.5rem;
   text-align: center;
@@ -110,14 +129,23 @@ label select {
   color: white;
   font-size: 1rem;
 }
-.extra {
-  margin-right: 0.5rem;
-}
 
 fieldset fieldset {
   margin-top: 1.5rem;
   padding: 1rem;
   background-color: #22223a;
+}
+.total-estimate {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.total-estimate label {
+  display: block;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
 }
 #totalEstimate {
   background-color: #000;
@@ -131,9 +159,22 @@ fieldset fieldset {
   width: 100%;
   border-radius: 5px;
 }
-.terms {
+
+.terms,
+.extra {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   margin-top: 1rem;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  color: #cccccc;
+}
+
+label.terms input[type="checkbox"],
+label.extra input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #5d3fd3;
 }
 
 .form-buttons {
@@ -159,6 +200,13 @@ fieldset fieldset {
 .form-buttons button:hover {
   background-color: #3b28a0;
 }
+.form-buttons button:disabled {
+  background-color: #444 !important;
+  color: #888 !important;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
 @media (max-width: 600px) {
   .form-buttons {
     flex-direction: column;
@@ -167,6 +215,35 @@ fieldset fieldset {
   .form-buttons button {
     width: 100%;
   }
+}
+/* Footer */
+.footer {
+  background-color: #0b0b1f;
+  padding: 2rem;
+  text-align: center;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: #aaa;
+  text-decoration: none;
+}
+
+.social-media-container {
+  margin-top: 10px;
+}
+.social-media-container a {
+  text-decoration: none;
+}
+.social-media-container img {
+  width: 40px;
+  height: auto;
+  filter: invert(1);
+  transition: transform 0.3s ease;
+}
+.social-media-container img:hover {
+  transform: scale(1.1);
 }
 @media (max-width: 768px) {
   .nav-links {
@@ -192,5 +269,11 @@ fieldset fieldset {
 
   .nav-links li {
     margin-bottom: 1rem;
+  }
+  .form-columns {
+    flex-direction: column;
+  }
+  .quote-page {
+    padding: 3rem 2rem;
   }
 }

@@ -2,15 +2,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("quoteForm");
   const productSelect = document.getElementById("productSelect");
   const deliveryDays = document.getElementById("deliveryDays");
-  const extras = document.querySelectorAll(".extra");
+  const extras = document.querySelectorAll(
+    "label.extra input[type='checkbox']"
+  );
   const totalEstimate = document.getElementById("totalEstimate");
 
   const hamburger = document.getElementById("hamburger");
   const navLinks = document.getElementById("navLinks");
+  const termsCheckbox = document.getElementById("acceptTerms");
+  const submitBtn = document.getElementById("submitBtn");
+
+  // Enable/disable submit button based on terms
+  termsCheckbox.addEventListener("change", () => {
+    submitBtn.disabled = !termsCheckbox.checked;
+  });
 
   hamburger.addEventListener("click", () => {
     navLinks.classList.toggle("show");
   });
+
   function calculateTotal() {
     let basePrice = parseFloat(productSelect.selectedOptions[0].dataset.price);
     let extraTotal = 0;
@@ -23,16 +33,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let total = basePrice + extraTotal;
 
-    const days = parseInt(deliveryDays.value);
-    if (!isNaN(days) && days > 15) {
-      total *= 0.9;
-    }
+    // const days = parseInt(deliveryDays.value);
+    // if (!isNaN(days) && days > 15) {
+    //   total *= 0.9;
+    // }
 
     totalEstimate.value = `€${total.toFixed(2)}`;
   }
 
   productSelect.addEventListener("change", calculateTotal);
-  deliveryDays.addEventListener("input", calculateTotal);
+  // deliveryDays.addEventListener("input", calculateTotal);
   extras.forEach((checkbox) =>
     checkbox.addEventListener("change", calculateTotal)
   );
