@@ -80,48 +80,77 @@ body {
 /*Project card */
 
 .project-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #1a1a2e;
+  max-width: 900px;
+  min-height: 250px;
+  margin: 2rem auto;
   display: flex;
   flex-direction: column;
-  background-size: cover;
-  background-position: center;
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-  max-width: 900px;
-  margin: 2rem auto;
-  color: white;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  transition: all 0.4s ease;
-  min-height: 250px;
 }
-
-/* Background overlay when collapsed */
-.project-card::before {
-  content: "";
+/*collapsed*/
+.project-content {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  z-index: 2;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.project-image {
+  position: relative;
+  height: 300px;
+  width: 100%;
   z-index: 1;
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition: all 0.3s ease;
+  object-fit: cover;
+  transform: scale(1.035);
 }
 
 .project-content {
-  padding: 2rem;
-  z-index: 2;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  height: 100%;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.project-content h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+/*expanded*/
+.project-card.expanded {
+  flex-direction: row;
+  height: auto;
 }
 
-.short-desc {
-  color: #ccc;
-  margin-bottom: 1rem;
+.project-card.expanded .project-content {
+  position: static;
+  background-color: #1a1a2e;
+  flex: 1;
+  z-index: auto;
+}
+
+.project-card.expanded .project-image {
+  width: 300px;
+  height: auto;
+}
+.project-card.expanded .project-image img {
+  transform: scale(1.08);
+}
+.project-expanded-extra {
+  display: none;
+  margin-top: 1.5rem;
+}
+
+.project-card.expanded .project-expanded-extra {
+  display: block;
 }
 
 .genre-tags span {
@@ -131,75 +160,31 @@ body {
   font-size: 0.75rem;
   margin-right: 0.4rem;
   display: inline-block;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
-/*Discover button*/
 .discover-btn {
+  margin-top: 1rem;
   background-color: #ffdf00;
-  color: #1a1a2e;
+  color: #000;
   padding: 0.6rem 1.4rem;
   border: none;
   border-radius: 30px;
   font-weight: bold;
-  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  margin-top: 1rem;
-  display: inline-flex;
-  max-width: 150px;
-  /* display: block; */
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
 }
-.discover-btn:hover {
-  background-color: #eac800;
-  color: #000;
-}
+
+/* Button text switching */
 .discover-btn .btn-hide {
   display: none;
 }
+
 .project-card.expanded .btn-show {
   display: none;
 }
+
 .project-card.expanded .btn-hide {
   display: inline;
-}
-
-/* Expanded layout */
-.project-card.expanded {
-  flex-direction: row;
-  background: none;
-}
-
-.project-card.expanded::before {
-  display: none;
-}
-
-.project-card.expanded .project-image {
-  flex: 0 0 300px;
-  /* background-image: url("../images/test.webp"); */
-  background-size: cover;
-  background-position: center;
-  height: auto;
-  min-height: 100%;
-}
-
-.project-card.expanded .project-content {
-  flex: 1;
-  background-color: #1a1a2e;
-  padding: 2rem;
-  justify-content: flex-start;
-}
-
-.project-expanded-extra {
-  display: none;
-  margin-top: 1rem;
-}
-
-.project-card.expanded .project-expanded-extra {
-  display: block;
 }
 
 /* Audio player styles */

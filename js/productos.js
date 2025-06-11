@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll("[data-project]");
+  const cards = document.querySelectorAll(".project-card");
 
   cards.forEach((card) => {
     const btn = card.querySelector(".discover-btn");
@@ -8,8 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
       e.stopPropagation();
       const isExpanded = card.classList.contains("expanded");
 
+      // Collapse others
       cards.forEach((c) => c.classList.remove("expanded"));
 
+      // Toggle current
       if (!isExpanded) {
         card.classList.add("expanded");
       }

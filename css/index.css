@@ -240,6 +240,9 @@ body {
 .news-container {
   display: flex;
   flex-wrap: wrap;
+  display: flex;
+  align-items: start;
+  justify-content: center;
   gap: 1.5rem;
   margin-top: 1rem;
 }

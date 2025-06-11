@@ -32,17 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     let total = basePrice + extraTotal;
-
-    // const days = parseInt(deliveryDays.value);
-    // if (!isNaN(days) && days > 15) {
-    //   total *= 0.9;
-    // }
-
     totalEstimate.value = `€${total.toFixed(2)}`;
   }
 
   productSelect.addEventListener("change", calculateTotal);
-  // deliveryDays.addEventListener("input", calculateTotal);
   extras.forEach((checkbox) =>
     checkbox.addEventListener("change", calculateTotal)
   );
@@ -90,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    alert("Form submitted successfully!"); // Replace with actual handling logic
+    alert("Form submitted successfully!");
   });
 
   // Initial calculation
