@@ -147,6 +147,11 @@ fieldset fieldset {
   margin-bottom: 0.5rem;
   color: #ffffff;
 }
+
+#deliveryTime {
+  width: 95.5%;
+}
+
 #totalEstimate {
   background-color: #000;
   color: #fff;
@@ -207,15 +212,6 @@ label.extra input[type="checkbox"] {
   opacity: 0.6;
 }
 
-@media (max-width: 600px) {
-  .form-buttons {
-    flex-direction: column;
-  }
-
-  .form-buttons button {
-    width: 100%;
-  }
-}
 /* Footer */
 .footer {
   background-color: #0b0b1f;
@@ -275,5 +271,14 @@ label.extra input[type="checkbox"] {
   }
   .quote-page {
     padding: 3rem 2rem;
+  }
+}
+@media (max-width: 600px) {
+  .form-buttons {
+    flex-direction: column;
+  }
+
+  .form-buttons button {
+    width: 100%;
   }
 }

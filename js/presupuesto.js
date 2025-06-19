@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("quoteForm");
   const productSelect = document.getElementById("productSelect");
-  const deliveryDays = document.getElementById("deliveryDays");
+  const deliveryInput = document.getElementById("deliveryTime");
   const extras = document.querySelectorAll(
     "label.extra input[type='checkbox']"
   );
@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function calculateTotal() {
+    const deliveryDays = parseInt(deliveryInput.value, 10);
     let basePrice = parseFloat(productSelect.selectedOptions[0].dataset.price);
     let extraTotal = 0;
 
@@ -32,6 +33,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     let total = basePrice + extraTotal;
+
+    if (deliveryDays > 355) {
+      alert("Please choose a delivery time less than 356 days.");
+      deliveryInput.value = 355;
+      return;
+    }
+    if (deliveryDays > 30) {
+      total *= 0.8;
+    } else if (deliveryDays > 10) {
+      total *= 0.9;
+    }
+
     totalEstimate.value = `€${total.toFixed(2)}`;
   }
 
@@ -39,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
   extras.forEach((checkbox) =>
     checkbox.addEventListener("change", calculateTotal)
   );
+  deliveryInput.addEventListener("change", calculateTotal);
 
   // Validate contact fields on form submit
   form.addEventListener("submit", (e) => {

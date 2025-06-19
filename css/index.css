@@ -284,6 +284,32 @@ body {
   position: relative;
 }
 
+/*Pagination*/
+.pagination {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.pagination a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin: 0 0.2rem;
+  background: #5d3fd3;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.2s ease;
+}
+
+.pagination a.active {
+  background: #2d1a8d;
+  font-weight: bold;
+}
+
+.pagination a:hover {
+  background: #4a30b5;
+}
+
 .news-section::after,
 .services-section::after {
   content: "";
