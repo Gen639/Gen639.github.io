@@ -1,26 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Request a Quote | JingleWorks</title>
-    <link rel="stylesheet" href="../css/presupuesto.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <nav class="navbar">
-      <div class="logo">JingleWorks</div>
-      <div class="hamburger" id="hamburger">&#9776;</div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="productos.html">Gallery</a></li>
-        <li><a href="presupuesto.html" class="active">Quote</a></li>
-        <li><a href="contacto.html">Contact</a></li>
-      </ul>
-    </nav>
+<?php
+$activePage = 'quote';
+$prefix = '../';
+$pageTitle = 'Request a Quote | JingleWorks';
+$pageHeadExtras = '<link rel="stylesheet" href="../css/presupuesto.css" />';
+include __DIR__ . '/../includes/header.php';
+?>
 
     <main class="quote-page">
       <h1>Request a Custom Quote</h1>
@@ -118,52 +102,7 @@
       </form>
     </main>
     <!-- 🔚 Footer -->
-    <footer class="footer">
-      <div class="footer-content">
-        <p>© 2025 JingleWorks. All rights reserved.</p>
-
-        <div class="social-media-container">
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-            <img
-              src="../images/social/icons8-facebook-50.png"
-              alt="facebook-icon"
-            />
-          </a>
-
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-            <img
-              src="../images/social/icons8-instagram-50.png"
-              alt="instagram-icon"
-            />
-          </a>
-
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-            <img
-              src="../images/social/icons8-youtube-50.png"
-              alt="youtube-icon"
-            />
-          </a>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-            <img
-              src="../images/social/icons8-telegram-50.png"
-              alt="telegram-icon"
-            />
-          </a>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-            <img src="../images/social/icons8-x-50.png" alt="x-icon" />
-          </a>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-            <img
-              src="../images/social/icons8-linkedin-50.png"
-              alt="linkedin-icon"
-            />
-          </a>
-        </div>
-
-        <p><a href="#">Legal Notice</a></p>
-      </div>
-    </footer>
-
-    <script src="../js/presupuesto.js"></script>
-  </body>
-</html>
+<?php
+$footerExtra = '<script src="../js/presupuesto.js"></script>';
+include __DIR__ . '/../includes/footer.php';
+?>

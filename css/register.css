@@ -1,0 +1,217 @@
+/* Register Page Styles */
+
+main.register-page {
+  background-color: #121226;
+  color: #f0f0f0;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  min-height: 70vh;
+}
+
+main.register-page h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.register-intro {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  color: #cccccc;
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+fieldset {
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 2rem;
+  background-color: #1a1a2e;
+}
+
+legend {
+  padding: 0 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 1.2rem;
+  color: #cccccc;
+  font-size: 0.95rem;
+}
+
+label input[type="text"],
+label input[type="email"],
+label input[type="password"],
+label select {
+  margin-top: 0.5rem;
+  padding: 0.6rem;
+  width: 100%;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #2a2a40;
+  color: white;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+label input[type="text"]:focus,
+label input[type="email"]:focus,
+label input[type="password"]:focus,
+label select:focus {
+  outline: none;
+  border-color: #5d3fd3;
+  box-shadow: 0 0 8px rgba(93, 63, 211, 0.3);
+}
+
+label select option {
+  background-color: #2a2a40;
+  color: white;
+}
+
+.form-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+fieldset.form-column {
+  grid-column: span 1;
+  padding: 1.5rem;
+}
+
+.form-column-full {
+  grid-column: 1 / -1;
+}
+
+.password-requirements {
+  grid-column: 1 / -1;
+  background-color: #22223a;
+  border: 1px solid #333;
+  border-left: 4px solid #5d3fd3;
+  padding: 1rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  color: #cccccc;
+  margin-bottom: 1rem;
+}
+
+.password-requirements h4 {
+  margin: 0 0 0.5rem 0;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.password-requirements ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.password-requirements li {
+  margin-bottom: 0.3rem;
+}
+
+label input[type="checkbox"] {
+  margin-right: 0.5rem;
+  accent-color: #5d3fd3;
+}
+
+.terms-agreement {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #cccccc;
+}
+
+.terms-agreement input[type="checkbox"] {
+  margin-top: 0.25rem;
+}
+
+.terms-agreement a {
+  color: #a88dff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.terms-agreement a:hover {
+  color: #c4b5ff;
+  text-decoration: underline;
+}
+
+.form-button {
+  padding: 1rem;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  background-color: #5d3fd3;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.form-button:hover {
+  background-color: #3b28a0;
+}
+
+.auth-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #cccccc;
+  font-size: 0.95rem;
+}
+
+.auth-link a {
+  color: #a88dff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.auth-link a:hover {
+  color: #c4b5ff;
+}
+
+@media (max-width: 768px) {
+  main.register-page {
+    padding: 1rem;
+  }
+
+  main.register-page h1 {
+    font-size: 2rem;
+  }
+
+  .form-columns {
+    grid-template-columns: 1fr;
+  }
+
+  fieldset.form-column {
+    grid-column: auto;
+  }
+
+  .form-column-full {
+    grid-column: auto;
+  }
+
+  fieldset {
+    padding: 1.5rem;
+  }
+}

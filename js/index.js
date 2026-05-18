@@ -2,29 +2,37 @@ document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.getElementById("hamburger");
   const navLinks = document.getElementById("navLinks");
 
-  hamburger.addEventListener("click", () => {
-    navLinks.classList.toggle("show");
-  });
+  if (hamburger && navLinks) {
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+  }
 
   let currentSlide = 0;
   const track = document.querySelector(".carousel-track");
   const slides = document.querySelectorAll(".carousel-item");
 
-  function moveToSlide(index) {
-    currentSlide = index % slides.length;
-    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+  if (track && slides.length > 0) {
+    function moveToSlide(index) {
+      currentSlide = index % slides.length;
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    setInterval(() => {
+      moveToSlide(currentSlide + 1);
+    }, 10000);
+
+    track.addEventListener("click", () => {
+      moveToSlide(currentSlide + 1);
+    });
   }
-
-  setInterval(() => {
-    moveToSlide(currentSlide + 1);
-  }, 10000);
-
-  track.addEventListener("click", () => {
-    moveToSlide(currentSlide + 1);
-  });
 
   function randomlyHighlightUseCases() {
     const boxes = document.querySelectorAll(".usecase-box");
+    if (boxes.length === 0) {
+      return;
+    }
+
     let previous;
 
     setInterval(() => {

@@ -1,28 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JingleWorks | Custom Audio Production</title>
-    <link rel="stylesheet" href="css/index.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-    <!-- <link rel="stylesheet" href="style.css" /> -->
-  </head>
-  <body>
-    <main>
-      <nav class="navbar">
-        <div class="logo">JingleWorks</div>
-        <div class="hamburger" id="hamburger">&#9776;</div>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="views/productos.html">Gallery</a></li>
-          <li><a href="views/presupuesto.html">Quote</a></li>
-          <li><a href="views/contacto.html">Contact</a></li>
-        </ul>
-      </nav>
+<?php
+$activePage = 'home';
+$prefix = '';
+$pageTitle = 'JingleWorks | Custom Audio Production';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+$errors = [];
+$latestNews = [];
+$newsPreviewLimit = 90;
+$successMessage = $_SESSION['flash_success'] ?? '';
+unset($_SESSION['flash_success']);
+
+require __DIR__ . '/includes/db.php';
+
+if ($dbError !== null || !$mysqli instanceof mysqli) {
+    $errors[] = $dbError ?? 'Database connection failed.';
+} else {
+    $stmt = $mysqli->prepare('
+        SELECT
+            idNoticia,
+            titulo,
+            imagen,
+            texto,
+            fecha
+        FROM noticias
+        ORDER BY fecha DESC, idNoticia DESC
+        LIMIT 3
+    ');
+
+    if ($stmt) {
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        while ($row = $result->fetch_assoc()) {
+            $latestNews[] = $row;
+        }
+
+        $stmt->close();
+    } else {
+        $errors[] = 'News query failed.';
+    }
+
+    $mysqli->close();
+}
+
+include __DIR__ . '/includes/header.php';
+?>
+<main>
+      <?php if ($successMessage !== '') : ?>
+        <div class="content">
+          <div class="form-messages success">
+            <ul>
+              <li><?= htmlspecialchars($successMessage, ENT_QUOTES, 'UTF-8') ?></li>
+            </ul>
+          </div>
+        </div>
+      <?php endif; ?>
 
       <section class="fullscreen-carousel">
         <div class="carousel-track">
@@ -30,6 +64,8 @@
             <img
               src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3hkZzIwbDliMXBldHg1bDV6aGJ1dHZhMzYxbHJsem4zaTY3Y2NyMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/uxtiDOWclM0MBAJZs1/giphy.gif"
               alt="Ambient music"
+              width="480"
+              height="480"
             />
             <div class="caption">
               <h2>Ambient</h2>
@@ -40,6 +76,8 @@
             <img
               src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHhrM2dlemcwNXlldXdjeXBnYzhtdWdxamR3MTc5b2x0bzBrbmVzYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XChQFtTCm8e8K9RJKS/giphy.gif"
               alt="Techno music"
+              width="500"
+              height="500"
             />
             <div class="caption">
               <h2>Techno</h2>
@@ -53,6 +91,8 @@
             <img
               src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmswbGR3MTV0NDhyNDh2eGV3ZHk5eDJnZjltNDZvNXl4cnFuYzZlaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/RiJRSLRPt0HfS2Ysny/giphy.gif"
               alt="Orchestral music"
+              width="480"
+              height="270"
             />
             <div class="caption">
               <h2>Orchestral</h2>
@@ -63,6 +103,8 @@
             <img
               src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWc5ZnhjdjNlZXhlN2U2cDFtODQwbHBsaHRvMjlld21zeWs0YWExOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Lp0Ou5LRX3oGURgXxt/giphy.gif"
               alt="Lo-Fi music"
+              width="384"
+              height="480"
             />
             <div class="caption">
               <h2>Lo-Fi</h2>
@@ -76,6 +118,8 @@
             <img
               src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2x1ODIxYWF5am1ocXZyNGhyZHJvNHRlMnhmbXBkYTRoZ244MGlpdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fxTZFbaSezLVbr3qLj/giphy.gif"
               alt="Jazz music"
+              width="640"
+              height="640"
             />
             <div class="caption">
               <h2>Jazz</h2>
@@ -86,12 +130,12 @@
           </div>
         </div>
         <div class="hero-overlay">
-          <h1>Your Brand’s Soundtrack Starts Here</h1>
+          <h1>Your Brand's Soundtrack Starts Here</h1>
           <p>
             We create custom-made jingles and music for ads, events, and
             experiences.
           </p>
-          <a href="views/productos.html" class="cta-button">Hear Our Work</a>
+          <a href="views/productos.php" class="cta-button">Hear Our Work</a>
         </div>
       </section>
 
@@ -109,9 +153,47 @@
 
       <section class="news-section">
         <h2>Latest News</h2>
+        <?php if (!empty($errors)) : ?>
+          <p class="news-error"><?= htmlspecialchars(implode(' ', $errors), ENT_QUOTES, 'UTF-8') ?></p>
+        <?php elseif (empty($latestNews)) : ?>
+          <p class="news-empty">No news available at the moment.</p>
+        <?php else : ?>
+          <div id="news-container" class="news-container">
+            <?php foreach ($latestNews as $newsItem) : ?>
+              <?php
+              
 
-        <div id="news-container" class="news-container"></div>
-        <div class="pagination"></div>
+              $fullText = trim((string) ($newsItem['texto'] ?? ''));
+              if (function_exists('mb_strlen')) {
+                  $isTruncated = mb_strlen($fullText) > $newsPreviewLimit;
+                  $previewText = $isTruncated ? mb_substr($fullText, 0, $newsPreviewLimit) : $fullText;
+              } else {
+                  $isTruncated = strlen($fullText) > $newsPreviewLimit;
+                  $previewText = $isTruncated ? substr($fullText, 0, $newsPreviewLimit) : $fullText;
+              }
+              ?>
+              <article class="news-card">
+                
+                <div class="news-content">
+                  <h3><?= htmlspecialchars($newsItem['titulo'], ENT_QUOTES, 'UTF-8') ?></h3>
+                  <p class="news-date"><?= htmlspecialchars(date('d/m/Y', strtotime($newsItem['fecha'])), ENT_QUOTES, 'UTF-8') ?></p>
+                  <p>
+                    <?= htmlspecialchars($previewText, ENT_QUOTES, 'UTF-8') ?>
+                    <?php if ($isTruncated) : ?>
+                      ...
+                      <a
+                        class="news-read-more"
+                        href="views/noticias.php#noticia-<?= htmlspecialchars((string) $newsItem['idNoticia'], ENT_QUOTES, 'UTF-8') ?>"
+                      >
+                        Read more
+                      </a>
+                    <?php endif; ?>
+                  </p>
+                </div>
+              </article>
+            <?php endforeach; ?>
+          </div>
+        <?php endif; ?>
       </section>
 
       <!-- Services Section -->
@@ -129,7 +211,7 @@
             <div class="service-card">
               <h3>🔊 Sonic Logos</h3>
               <p>
-                Short audio signatures that define your brand’s identity
+                Short audio signatures that define your brand's identity
                 instantly.
               </p>
             </div>
@@ -163,7 +245,7 @@
           </div>
         </div>
         <div class="services-cta">
-          <a href="views/contacto.html" class="cta-button">Contact Us</a>
+          <a href="views/contacto.php" class="cta-button">Contact Us</a>
         </div>
       </section>
 
@@ -189,57 +271,14 @@
             Get a custom jingle or soundtrack that makes your brand
             unforgettable.
           </p>
-          <a href="views/presupuesto.html" class="cta-button"
+          <a href="views/presupuesto.php" class="cta-button"
             >Request a Quote</a
           >
         </div>
       </section>
     </main>
+<?php
+$footerExtra = '';
+include __DIR__ . '/includes/footer.php';
+?>
 
-    <!-- 🔚 Footer -->
-    <footer class="footer">
-      <div class="footer-content">
-        <p>© 2025 JingleWorks. All rights reserved.</p>
-
-        <div class="social-media-container">
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-            <img
-              src="images/social/icons8-facebook-50.png"
-              alt="facebook-icon"
-            />
-          </a>
-
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-            <img
-              src="images/social/icons8-instagram-50.png"
-              alt="instagram-icon"
-            />
-          </a>
-
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-            <img src="images/social/icons8-youtube-50.png" alt="youtube-icon" />
-          </a>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-            <img
-              src="images/social/icons8-telegram-50.png"
-              alt="telegram-icon"
-            />
-          </a>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-            <img src="images/social/icons8-x-50.png" alt="x-icon" />
-          </a>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-            <img
-              src="images/social/icons8-linkedin-50.png"
-              alt="linkedin-icon"
-            />
-          </a>
-        </div>
-
-        <p><a href="#">Legal Notice</a></p>
-      </div>
-    </footer>
-    <script src="js/news.js"></script>
-    <script src="js/index.js"></script>
-  </body>
-</html>

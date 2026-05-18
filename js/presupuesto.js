@@ -1,105 +1,38 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("quoteForm");
   const productSelect = document.getElementById("productSelect");
   const deliveryInput = document.getElementById("deliveryTime");
   const extras = document.querySelectorAll(
-    "label.extra input[type='checkbox']"
+    "label.extra input[type='checkbox']",
   );
   const totalEstimate = document.getElementById("totalEstimate");
-
-  const hamburger = document.getElementById("hamburger");
-  const navLinks = document.getElementById("navLinks");
   const termsCheckbox = document.getElementById("acceptTerms");
   const submitBtn = document.getElementById("submitBtn");
 
-  // Enable/disable submit button based on terms
-  termsCheckbox.addEventListener("change", () => {
-    submitBtn.disabled = !termsCheckbox.checked;
-  });
-
-  hamburger.addEventListener("click", () => {
-    navLinks.classList.toggle("show");
-  });
-
-  function calculateTotal() {
-    const deliveryDays = parseInt(deliveryInput.value, 10);
-    let basePrice = parseFloat(productSelect.selectedOptions[0].dataset.price);
-    let extraTotal = 0;
-
-    extras.forEach((extra) => {
-      if (extra.checked) {
-        extraTotal += parseFloat(extra.value);
-      }
-    });
-
-    let total = basePrice + extraTotal;
-
-    if (deliveryDays > 355) {
-      alert("Please choose a delivery time less than 356 days.");
-      deliveryInput.value = 355;
+  function updateTotal() {
+    if (!productSelect || !deliveryInput || !totalEstimate) {
       return;
     }
-    if (deliveryDays > 30) {
-      total *= 0.8;
-    } else if (deliveryDays > 10) {
-      total *= 0.9;
-    }
 
-    totalEstimate.value = `€${total.toFixed(2)}`;
+    const selectedOption = productSelect.selectedOptions[0];
+    const basePrice = Number(selectedOption?.dataset.price ?? 0);
+    const extrasTotal = Array.from(extras)
+      .filter((extra) => extra.checked)
+      .reduce((sum, extra) => sum + Number(extra.value || 0), 0);
+    const deliveryDays = Number(deliveryInput.value || 0);
+    const rushFee = deliveryDays > 0 && deliveryDays < 7 ? 50 : 0;
+
+    totalEstimate.value = `€${basePrice + extrasTotal + rushFee}`;
   }
 
-  productSelect.addEventListener("change", calculateTotal);
-  extras.forEach((checkbox) =>
-    checkbox.addEventListener("change", calculateTotal)
-  );
-  deliveryInput.addEventListener("change", calculateTotal);
+  if (termsCheckbox && submitBtn) {
+    submitBtn.disabled = !termsCheckbox.checked;
+    termsCheckbox.addEventListener("change", () => {
+      submitBtn.disabled = !termsCheckbox.checked;
+    });
+  }
 
-  // Validate contact fields on form submit
-  form.addEventListener("submit", (e) => {
-    const name = form.name.value.trim();
-    const surname = form.surname.value.trim();
-    const phone = form.phone.value.trim();
-    const email = form.email.value.trim();
-    const termsAccepted = document.getElementById("acceptTerms").checked;
-
-    const nameRegex = /^[a-zA-Z]{1,15}$/;
-    const surnameRegex = /^[a-zA-Z\s]{1,40}$/;
-    const phoneRegex = /^[0-9]{9}$/;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!nameRegex.test(name)) {
-      alert("Please enter a valid name (letters only, max 15 characters).");
-      e.preventDefault();
-      return;
-    }
-
-    if (!surnameRegex.test(surname)) {
-      alert("Please enter a valid surname (letters only, max 40 characters).");
-      e.preventDefault();
-      return;
-    }
-
-    if (!phoneRegex.test(phone)) {
-      alert("Please enter a valid phone number (9 digits).");
-      e.preventDefault();
-      return;
-    }
-
-    if (!emailRegex.test(email)) {
-      alert("Please enter a valid email address.");
-      e.preventDefault();
-      return;
-    }
-
-    if (!termsAccepted) {
-      alert("You must accept the terms and privacy policy.");
-      e.preventDefault();
-      return;
-    }
-
-    alert("Form submitted successfully!");
-  });
-
-  // Initial calculation
-  calculateTotal();
+  productSelect?.addEventListener("change", updateTotal);
+  deliveryInput?.addEventListener("input", updateTotal);
+  extras.forEach((extra) => extra.addEventListener("change", updateTotal));
+  updateTotal();
 });

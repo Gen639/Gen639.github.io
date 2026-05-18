@@ -1,0 +1,378 @@
+/* Citaciones (Appointments) Page */
+.citaciones-page {
+  background-color: #0f0f1e;
+  padding: 2rem 0;
+  min-height: 100vh;
+}
+
+.citaciones-page .container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.citaciones-page h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #f0f0f0;
+}
+
+.citaciones-page h2 {
+  font-size: 1.8rem;
+  color: #e94560;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #0f3460;
+}
+
+/* Form Messages */
+.form-messages {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  list-style: none;
+}
+
+.form-messages.error {
+  background-color: rgba(233, 69, 96, 0.2);
+  border-left: 4px solid #e94560;
+  color: #f0f0f0;
+}
+
+.form-messages.success {
+  background-color: rgba(39, 174, 96, 0.2);
+  border-left: 4px solid #27ae60;
+  color: #f0f0f0;
+}
+
+.form-messages ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.form-messages li {
+  margin-bottom: 0.5rem;
+}
+
+/* Appointment Request Section */
+.appointment-request {
+  background-color: #1a1a2e;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Form Styling */
+.appointment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  color: #e94560;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.75rem;
+  border: 1px solid #0f3460;
+  border-radius: 4px;
+  background-color: #16213e;
+  color: #f0f0f0;
+  font-family: inherit;
+  font-size: 1rem;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #e94560;
+  box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.1);
+}
+
+/* Buttons */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background-color: #e94560;
+  color: #f0f0f0;
+}
+
+.btn-primary:hover {
+  background-color: #d63052;
+  box-shadow: 0 4px 12px rgba(233, 69, 96, 0.3);
+}
+
+.btn-secondary {
+  background-color: #0f3460;
+  color: #f0f0f0;
+}
+
+.btn-secondary:hover {
+  background-color: #1a4d7a;
+}
+
+.btn-edit {
+  background-color: #3498db;
+  color: #f0f0f0;
+}
+
+.btn-edit:hover {
+  background-color: #2980b9;
+}
+
+.btn-delete {
+  background-color: #e74c3c;
+  color: #f0f0f0;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+}
+
+/* My Appointments Section */
+.my-appointments {
+  background-color: #1a1a2e;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.no-appointments {
+  text-align: center;
+  color: #a0a0a0;
+  padding: 2rem;
+  font-style: italic;
+}
+
+/* Appointments List */
+.appointments-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.appointment-card {
+  background-color: #16213e;
+  border-radius: 8px;
+  padding: 1.5rem;
+  border-left: 4px solid #0f3460;
+  transition: all 0.3s ease;
+}
+
+.appointment-card:hover {
+  box-shadow: 0 4px 12px rgba(233, 69, 96, 0.2);
+}
+
+.appointment-card.future {
+  border-left-color: #27ae60;
+}
+
+.appointment-card.past {
+  border-left-color: #95a5a6;
+  opacity: 0.85;
+}
+
+.appointment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.appointment-header h3 {
+  margin: 0;
+  color: #f0f0f0;
+  font-size: 1.3rem;
+}
+
+.appointment-status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-upcoming {
+  background-color: rgba(39, 174, 96, 0.3);
+  color: #27ae60;
+}
+
+.status-completed {
+  background-color: rgba(149, 165, 166, 0.3);
+  color: #95a5a6;
+}
+
+.appointment-content {
+  margin-bottom: 1.5rem;
+  color: #d0d0d0;
+}
+
+.appointment-content strong {
+  color: #e94560;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.appointment-content p {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.appointment-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.delete-form {
+  margin: 0;
+  display: contents;
+}
+
+.info-text {
+  color: #a0a0a0;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Modal Styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background-color: #1a1a2e;
+  margin: 5% auto;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #e94560;
+}
+
+.close {
+  color: #a0a0a0;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: #e94560;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  justify-content: flex-end;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .citaciones-page h1 {
+    font-size: 2rem;
+  }
+
+  .citaciones-page h2 {
+    font-size: 1.5rem;
+  }
+
+  .appointment-request,
+  .my-appointments {
+    padding: 1.5rem;
+  }
+
+  .appointment-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .appointment-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .appointment-actions .btn {
+    width: 100%;
+  }
+
+  .modal-content {
+    width: 95%;
+    margin: 50% auto;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .modal-actions .btn {
+    width: 100%;
+  }
+}
