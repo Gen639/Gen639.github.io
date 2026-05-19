@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const PAUSE_ICON = "\u23F8";
   const cards = document.querySelectorAll(".project-card");
 
+  // Gallery cards behave like an accordion so only one project is expanded.
   cards.forEach((card) => {
     const btn = card.querySelector(".discover-btn");
     if (!btn) {
@@ -30,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const progressFill = player.querySelector(".progress-fill");
     let animationFrame;
 
+    // requestAnimationFrame keeps the progress bar in sync while audio plays.
     function updateProgress() {
       const percent = audio.duration
         ? (audio.currentTime / audio.duration) * 100
@@ -41,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     playBtn.textContent = PLAY_ICON;
 
     playBtn.addEventListener("click", () => {
+      // Starting one track pauses any other active preview.
       players.forEach((p) => {
         if (p !== player) {
           p.audio?.pause();

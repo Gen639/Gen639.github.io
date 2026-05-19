@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const termsCheckbox = document.getElementById("acceptTerms");
   const submitBtn = document.getElementById("submitBtn");
 
+  // Calculates the estimate from the selected package, extras, and rush fee.
   function updateTotal() {
     if (!productSelect || !deliveryInput || !totalEstimate) {
       return;

@@ -1,196 +1,127 @@
 # JingleWorks
 
-JingleWorks is a PHP and MySQL web application for a custom audio production studio. It includes a public marketing site, an audio gallery, news, user registration and login, profile management, appointment scheduling, and administration screens for users, gallery items, news, and appointments.
+JingleWorks is a PHP and MySQL web application for a custom audio production business. It provides public marketing pages, a gallery of audio projects, news posts, user registration/login, user appointment scheduling, and admin tools for managing users, appointments, gallery entries, and news.
 
-This repository contains Version 2 of the original `trabajo_JS` project. Version 1 was mainly a static HTML/CSS/JavaScript site. Version 2 keeps the original visual idea and some existing pages, but adds PHP templates, a MySQL database, user sessions, role-based navigation, and admin CRUD screens.
-
-The project is intentionally built as a simple page-based PHP application. It does not use an MVC framework; each page contains the PHP needed for that screen and shares common layout through `includes/header.php` and `includes/footer.php`.
-
-## Version 2 Highlights
-
-- Replaced the old static `.html` entry points with PHP pages.
-- Added a reusable header, footer, and database connection include.
-- Added MySQL tables for users, login credentials, gallery items, news, and appointments.
-- Added user registration, login, logout, remembered email, and profile editing.
-- Added role-based navigation for guests, normal users, and admin users.
-- Added admin screens to manage users, appointments, gallery content, and news.
-- Moved gallery and news content from static/front-end data toward database-backed records.
-- Kept some Version 1 pages mostly intact, especially `contacto` and `presupuesto`, while integrating them into the PHP layout.
-
-## Features
-
-- Public home page with audio-service content and latest news.
-- Gallery page that lists audio work from the database.
-- News page backed by database records.
-- Contact page with a Leaflet/OpenStreetMap map.
-- Quote request page with client-side validation and live price estimation.
-- User registration, login, logout, and profile editing.
-- User appointment scheduling and appointment management.
-- Admin dashboard pages for:
-  - users
-  - appointments
-  - gallery items
-  - news
+This is version 3 of the project, rebuilt around a small MVC-style structure. The local folder name is not part of the application logic: the project can be placed in any folder name, and the examples below use `your-project-folder` as a placeholder.
 
 ## Tech Stack
 
-- PHP with `mysqli` for server-side pages and database access.
-- MySQL / MariaDB for persistent application data.
-- Native PHP sessions for authentication state and role handling.
-- Password hashing with PHP's `password_hash()` / `password_verify()`.
-- HTML, CSS, and vanilla JavaScript for the front end.
-- Lightbox2 for gallery image previews.
-- Leaflet and OpenStreetMap tiles on the contact page.
-- XAMPP-compatible local development setup.
+- PHP with a MVC-style structure
+- MySQL
+- MySQLi used directly inside the model classes
+- HTML, CSS, and vanilla JavaScript
+- XAMPP-friendly local setup
+- Lightbox2 CDN for gallery image previews
+- Leaflet CDN and OpenStreetMap tiles on the contact page
 
-## Application Flow
+## Folder Structure
 
-The app has three main user states:
+- `index.php`: front controller that sends every request to `core/Router.php`.
+- `config/config.php`: one place for `.env`, environment variables, and database settings.
+- `core/Database.php`: creates the MySQLi connection used by models.
+- `core/Router.php`: maps `index.php?page=...` routes to controller methods.
+- `core/`: shared helpers, authentication guard, and base controller wiring.
+- `app/controllers/`: request handlers for pages, auth, users, appointments, news, and gallery.
+- `app/models/`: model classes that contain the SQL for each domain.
+- `app/views/`: MVC views split into `public`, `user`, and `admin`.
+- `includes/`: shared header and footer templates.
+- `css/`: page-specific stylesheets.
+- `js/`: page-specific browser behavior.
+- `images/`, `audio/`: static media used by the gallery, news, and shared layout.
+- `jingleworks_db_starter.sql`: starter database for GitHub/demo installs.
+- `jingleworks_db.sql`: fuller local database export with sample content.
+- `docs/`: architecture and maintainability notes.
 
-- Guests can visit the home page, gallery, news, contact page, quote page, login page, and register page.
-- Registered users can log in, edit their profile, and schedule or manage their own appointments.
-- Admin users can manage appointments, gallery items, users, and news.
+## Installation
 
-After login, the app stores the user's ID, role, name, and email in the PHP session. The shared header reads the session and changes the navigation depending on whether the visitor is logged in and whether the user role is `user` or `admin`.
+This project does not use Composer or npm packages. Runtime dependencies are provided by PHP, MySQL/MariaDB, and browser CDNs.
 
-## Content Flow
+1. Install XAMPP or another PHP/MySQL stack.
+2. Place the project under your web server document root, for example `C:\xampp\htdocs\your-project-folder`.
+3. Import `jingleworks_db_starter.sql` into MySQL for a clean demo setup with one database and one seeded admin user. If you want the fuller local sample data, import `jingleworks_db.sql` instead.
+4. Copy `.env_example` to `.env` and adjust values if your database differs from local defaults.
 
-News and gallery content are database-driven in Version 2.
-
-- News records are stored in the `noticias` table.
-- The public news page lists news ordered by date.
-- The home page shows the latest three news items.
-- Admin users can create, edit, and delete news from `views/noticias-administracion.php`.
-- News images are expected to live in `images/news/`.
-
-Gallery records are stored in the `gallery_items` table.
-
-- The public gallery page reads gallery records from MySQL.
-- Each gallery item can include a title, summary, details, tags, image, and audio file.
-- Admin users can create, edit, and delete gallery items from `views/galeria-administracion.php`.
-- Gallery images are expected to live in `images/gallery/`.
-- Audio files are expected to live in `audio/`.
-
-## Pages Kept Close To Version 1
-
-Some pages were kept close to their Version 1 behavior because they already worked as mostly front-end pages:
-
-- `views/contacto.php` keeps the contact/map page behavior and wraps it in the shared PHP layout.
-- `views/presupuesto.php` keeps the quote form and JavaScript price calculation. It currently calculates an estimate on the client side and does not save quote requests to the database.
-
-## Project Structure
+The starter SQL creates the required tables in the `jingleworks_db` database and one admin account:
 
 ```text
-.
-|-- audio/                     Audio files used by gallery items
-|-- css/                       Page-specific stylesheets
-|-- images/                    Gallery, news, and social images
-|-- includes/
-|   |-- db.php                 Database connection
-|   |-- header.php             Shared navigation/header
-|   `-- footer.php             Shared footer
-|-- js/                        Page-specific JavaScript
-|-- views/                     Public, user, and admin PHP pages
-|-- xml/                       XML news data
-|-- index.php                  Home page
-`-- jingleworks_db_starter.sql Starter database with demo admin user
+email: admin@example.com
+username: admin
+password: admin123
 ```
 
-## Requirements
+Change this password after importing if the project is used beyond a local demo.
 
-- XAMPP, WAMP, MAMP, or another PHP/MySQL environment
-- PHP with `mysqli` enabled
-- MySQL or MariaDB
+## Environment Variables
 
-## Local Setup
+```ini
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database_name
+DB_USERNAME=your_database_user
+DB_PASSWORD=your_database_password
+```
 
-1. Place the project folder inside your web server document root. The folder name can be anything.
+## Running Locally
 
-   For XAMPP on Windows, a typical location is:
-
-   ```text
-   C:\xampp\htdocs\your-project-folder
-   ```
-
-2. Start Apache and MySQL from the XAMPP control panel.
-
-3. Create and import the database.
-
-   Recommended for a demo/local install:
-
-   ```sql
-   SOURCE C:/xampp/htdocs/your-project-folder/jingleworks_db_starter.sql;
-   ```
-
-   You can also import `jingleworks_db_starter.sql` through phpMyAdmin.
-
-4. Check the database credentials in `includes/db.php`.
-
-   The current default values are:
-
-   ```php
-   $dbHost = '127.0.0.1';
-   $dbUser = 'root';
-   $dbPass = 'test';
-   $dbName = 'jingleworks_db';
-   ```
-
-   Update `$dbUser` and `$dbPass` if your local MySQL credentials are different.
-
-5. Open the app in your browser.
-
-   ```text
-   http://localhost/your-project-folder/index.php
-   ```
-
-   Replace `your-project-folder` with the actual folder name used on that machine.
-
-## Demo Login
-
-The starter database creates one admin user:
+With XAMPP Apache, visit:
 
 ```text
-Username: admin
-Password: admin123
+http://localhost/your-project-folder/index.php
 ```
 
-Change this password after importing the database if the project will be used outside a local demo environment.
+With PHP's built-in server:
 
-## Main Pages
+```powershell
+C:\xampp\php\php.exe -S 127.0.0.1:8088 -t C:\xampp\htdocs\your-project-folder
+```
 
-- `index.php` - home page
-- `views/productos.php` - gallery
-- `views/noticias.php` - news
-- `views/contacto.php` - contact
-- `views/presupuesto.php` - quote request
-- `views/register.php` - register
-- `views/login.php` - login
-- `views/profile.php` - profile
-- `views/citaciones.php` - user appointment scheduling
-- `views/citas-administracion.php` - admin appointment management
-- `views/galeria-administracion.php` - admin gallery management
-- `views/noticias-administracion.php` - admin news management
-- `views/usuarios-administracion.php` - admin user management
+Then open:
 
-## Database Notes
+```text
+http://127.0.0.1:8088/index.php
+```
 
-The application uses the `jingleworks_db` database. The main tables are:
+## How The Parts Interact
 
-- `users_data`
-- `users_login`
-- `gallery_items`
-- `noticias`
-- `citas`
+All browser requests enter through `index.php`, which delegates to `core/Router.php`. Routes use `index.php?page=...`, including form submissions such as `index.php?page=login-submit`.
 
-Use `jingleworks_db_starter.sql` for a ready-to-run local database with the schema and demo admin account.
+The router calls a controller method. Controllers validate input, enforce authentication through `core/Auth.php`, call models, and redirect or render views. Models contain the SQL and use `core/Database.php` for the MySQLi connection.
 
-## Asset Notes
+Frontend behavior is mostly static HTML/CSS with small JavaScript files:
 
-Gallery images should be placed in `images/gallery/`, news images in `images/news/`, and audio files in `audio/`. The admin gallery and news screens use the files available in these folders.
+- `js/index.js`: mobile navigation, home carousel, use-case highlights.
+- `js/productos.js`: gallery accordion behavior and audio preview playback.
+- `js/presupuesto.js`: quote estimate calculation and terms checkbox handling.
 
-## Development Notes
+## Main Features
 
-- Keep shared layout changes in `includes/header.php` and `includes/footer.php`.
-- Keep page-specific styles in the matching file under `css/`.
-- Keep page-specific scripts in the matching file under `js/`.
-- Avoid committing local test media files; `.gitignore` already excludes `audio/test.mp3`, `images/test.webp`, and `xml/news copy.xml`.
+- Public home page and service sections.
+- Public gallery with images, audio previews, expandable project details, and Lightbox previews.
+- Public news listing loaded from the database.
+- User registration and login.
+- Session-based authentication and role checks.
+- User profile editing.
+- User password change without exposing stored passwords.
+- User appointment scheduling, editing, and deletion for future appointments.
+- Admin user management, including role changes and password reset.
+- Admin appointment management by selected user.
+- Admin gallery management using local media files.
+- Admin news management using local news images.
+
+## Media Assets And AI-Generated Content
+
+This repository includes generated images and music created by the project author to showcase the website as a complete demo.
+
+The music files were generated by the author using a paid Suno subscription, which allows the author to use the tracks, including commercially, according to the applicable Suno plan and terms at the time of creation. These assets are included so the project can be cloned and run quickly with all demo content available.
+
+## Showcase Disclaimer
+
+This is a showcase project created for demonstration and portfolio purposes. Any names, brands, companies, stores, addresses, people, or other real-world references that match existing entities are purely coincidental. The project is not affiliated with or endorsed by any real company, store, brand, or organization unless explicitly stated.
+
+## Known Limitations And TODOs
+
+- There is no Composer or npm dependency management.
+- There are no automated tests.
+- Several admin views use dense inline markup and inline JavaScript.
+- Contact and quote forms are client-side/static and do not submit to the backend.
+- Media management expects files to already exist in `images/news`, `images/gallery`, and `audio`.

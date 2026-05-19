@@ -76,7 +76,7 @@ CREATE TABLE `citas` (
   `idCita` int NOT NULL AUTO_INCREMENT,
   `idUser` int NOT NULL,
   `fecha_cita` date NOT NULL,
-  `motivo_cita` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `motivo_cita` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`idCita`),
   KEY `idx_citas_idUser` (`idUser`),
   CONSTRAINT `fk_citas_users_data` FOREIGN KEY (`idUser`) REFERENCES `users_data` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE

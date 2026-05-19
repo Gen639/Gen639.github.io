@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Shared mobile navigation toggle used by every page header.
   const hamburger = document.getElementById("hamburger");
   const navLinks = document.getElementById("navLinks");
 
@@ -13,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelectorAll(".carousel-item");
 
   if (track && slides.length > 0) {
+    // The home carousel advances by full-slide widths and wraps forever.
     function moveToSlide(index) {
       currentSlide = index % slides.length;
       track.style.transform = `translateX(-${currentSlide * 100}%)`;
@@ -33,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    // Only one use-case badge is highlighted at a time.
     let previous;
 
     setInterval(() => {

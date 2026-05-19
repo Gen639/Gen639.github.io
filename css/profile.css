@@ -137,6 +137,16 @@
   box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
 }
 
+.btn-password {
+  background-color: #9b59b6;
+  color: #f0f0f0;
+}
+
+.btn-password:hover {
+  background-color: #8e44ad;
+  box-shadow: 0 4px 12px rgba(155, 89, 182, 0.3);
+}
+
 .btn-primary {
   background-color: #e94560;
   color: #f0f0f0;

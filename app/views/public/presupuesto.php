@@ -1,9 +1,8 @@
 <?php
 $activePage = 'quote';
-$prefix = '../';
 $pageTitle = 'Request a Quote | JingleWorks';
-$pageHeadExtras = '<link rel="stylesheet" href="../css/presupuesto.css" />';
-include __DIR__ . '/../includes/header.php';
+$pageHeadExtras = '<link rel="stylesheet" href="css/presupuesto.css" />';
+include root_path('includes/header.php');
 ?>
 
     <main class="quote-page">
@@ -12,7 +11,7 @@ include __DIR__ . '/../includes/header.php';
         <p>
           Ready to bring your brand to life with a unique sound? Fill out the
           form below to get a personalized quote. Let us know your project
-          goals, timeline, and preferences — and we’ll handle the rest.
+          goals, timeline, and preferences - and we'll handle the rest.
         </p>
       </div>
 
@@ -51,13 +50,13 @@ include __DIR__ . '/../includes/header.php';
                 Choose a product:
                 <select id="productSelect" name="product">
                   <option value="jingle" data-price="300">
-                    Advertising Jingle – €300
+                    Advertising Jingle - EUR 300
                   </option>
                   <option value="logo" data-price="150">
-                    Sonic Logo – €150
+                    Sonic Logo - EUR 150
                   </option>
                   <option value="podcast" data-price="250">
-                    Podcast Package – €250
+                    Podcast Package - EUR 250
                   </option>
                 </select>
               </label>
@@ -75,21 +74,21 @@ include __DIR__ . '/../includes/header.php';
                 <legend>Extras:</legend>
 
                 <label class="extra">
-                  <input type="checkbox" value="50" /> Voice-over (+€50)</label
+                  <input type="checkbox" value="50" /> Voice-over (+EUR 50)</label
                 >
                 <label class="extra"
                   ><input type="checkbox" value="30" /> Express Delivery
-                  (+€30)</label
+                  (+EUR 30)</label
                 >
                 <label class="extra"
                   ><input type="checkbox" value="20" /> Multiple Revisions
-                  (+€20)</label
+                  (+EUR 20)</label
                 >
               </fieldset>
 
               <div class="total-estimate">
                 <label>Estimated Total:</label>
-                <input type="text" id="totalEstimate" readonly value="€0" />
+                <input type="text" id="totalEstimate" readonly value="EUR 0" />
               </div>
             </fieldset>
           </div>
@@ -101,8 +100,7 @@ include __DIR__ . '/../includes/header.php';
         </div>
       </form>
     </main>
-    <!-- 🔚 Footer -->
 <?php
-$footerExtra = '<script src="../js/presupuesto.js"></script>';
-include __DIR__ . '/../includes/footer.php';
+$footerExtra = '<script src="js/presupuesto.js"></script>';
+include root_path('includes/footer.php');
 ?>

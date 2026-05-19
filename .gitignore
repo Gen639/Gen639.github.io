@@ -1,4 +1,4 @@
-audio/test.mp3
-images/test.webp
-xml/news copy.xml
+.env
+docs/
 jingleworks_db.sql
+jingleworks_db_copy.sql
